@@ -23,19 +23,23 @@ const post = {
 id:"3",
 title:"number"
 }
-Object.freeze(post)
+Object.freeze(post);
+console.log(username);
+console.log(loggedIn);
+console.log(post);
 
     // Practice 2 - Template Literals
     // Create a variable for firstName and lastName
     // Create a variable called message that can be reassigned
     // Use a template literal to create message like "Hi firstName lastName!"
     // Log out the message to the console
-    const firstName = "";
-    const lastName = ""
+    const firstName = "Mehdi";
+    const lastName = "Gara"
 
-    let message = ``;
+    let message = `Hi ${firstName} ${lastName}!`;
 
     console.log(message);
+
 
 
     // Practice 3 - Arrow Functions
@@ -43,13 +47,13 @@ Object.freeze(post)
     // Name the arrow function ArrowName
     // Log the value of ArrowName passing in your name as a parameter
 
-    function MyName(name) {
+    function MyName (name) {
       return (
         `<p>${name}<p>`
       )
     }
 
-
+const ArrowName = name => ( `<p>${name}<p>`); 
 
     // Practice 4 - .filter() and .map()
     // Filter the array of posts into a filteredPost variable
@@ -71,6 +75,9 @@ Object.freeze(post)
       }
     ];
 
+    let filteredPosts = posts
+      .filter(post => post.title.includes("post"))
+      .map(post => console.log(post.title));
 
 
     // Practice 5 - DOM Creation
@@ -97,6 +104,18 @@ Object.freeze(post)
       }
     ];
 
+
+    postsArray.map(post => {
+      const h2 = document.createElement("h2");
+      const link = document.createElement("a");
+      const title = document.createTextNode(post.title);
+
+      link.appendChild(title);
+      link.href = post.slug;
+      h2.appendChild(link);
+
+      postsContainer.appendChild(h2);
+    });
 
   </script>
 </body>
