@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
 import Posts from "./components/Posts";
+import Post from "./components/Post";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Redirect,
 } from "react-router-dom";
-import { Link } from "react-router-dom";
 import "./App.css";
 
 const App = (props) => {
@@ -41,6 +41,15 @@ const App = (props) => {
     path="/"
     render={() => <Posts posts={posts} />}
   />
+  <Route
+  path="/post/:postSlug"
+  render={(props) => {
+    const post = posts.find(
+      (post) => post.slug === props.match.params.postSlug
+    );
+    return <Post post={post} />;
+  }}
+/>
 </Routes>  
 </div>
 </Router>
